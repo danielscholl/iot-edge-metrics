@@ -65,13 +65,12 @@ These metrics can now be easily graphed and viewed by [Grafana](https://grafana.
 }
 ```
 
-
 ## Viewing Edge Metrics
 Metrics are available directly on the Edge Device itself.  `http://<edge_ip_address>:8080`
 
 The default dashboard contains the following panels
 
-1. Message Tracking Stored & Drained Guage and Chart
+1. Message Tracking
 
    Displays the total number of messages stored and drained from the internal queue.
 
@@ -80,11 +79,9 @@ The default dashboard contains the following panels
 
     SELECT sum("value") FROM "autogen"."application__endpointmessagedrainedcount" WHERE $timeFilter GROUP BY time(1m) fill(null)
    ```
-     <img src="./diagrams/chart1.png" alt="drawing" width="500"/>
+   <img src="./diagrams/chart1.png" alt="drawing" width="300"/>
 
-
-
-2. Message Count Stat Counter and Chart
+2. Message Count
 
    Displays the total number of messages received and sent to the cloud.
 
@@ -93,10 +90,9 @@ The default dashboard contains the following panels
 
     SELECT sum("value") FROM "autogen"."application__edgehubtocloudmessagesentcount" WHERE $timeFilter GROUP BY time(1m) fill(null)
    ```
-     <img src="./diagrams/chart2.png" alt="drawing" width="400" />
+   <img src="./diagrams/chart2.png" alt="drawing" width="300" />
 
-
-3. Message Latency Chart
+3. Message Latency
 
     Displays the latency incurred sending messages to the cloud.
 
@@ -109,9 +105,9 @@ The default dashboard contains the following panels
 
     SELECT mean("stddev") FROM "autogen"."application__edgehubtocloudmessagelatencyms" WHERE ("unit_dur" = 'ms') AND $timeFilter GROUP BY time(1m) fill(null)
     ```
-      <img src="./diagrams/chart3.png" alt="drawing" width="300" />
+    <img src="./diagrams/chart3.png" alt="drawing" width="300" />
 
-4. Message Write Ahead Latency Chart
+4. Message Write Ahead Latency
 
    Displays the latency incurred from message received to updating the count and appending to the log.
 
@@ -122,9 +118,9 @@ The default dashboard contains the following panels
 
     SELECT mean("mean") FROM "autogen"."application__sequentialstoreappendlatencyms" WHERE ("unit_dur" = 'ms') AND $timeFilter GROUP BY time(1m) fill(null)
    ```
-     <img src="./diagrams/chart4.png" alt="drawing" width="300" />
+   <img src="./diagrams/chart4.png" alt="drawing" width="300" />
 
-5. Store and Forward Latency Chart
+5. Store and Forward Latency
 
    Displays the time to write and read messages from the store and forward database.
 
@@ -137,5 +133,4 @@ The default dashboard contains the following panels
 
     SELECT mean("stddev") FROM "autogen"."application__dbgetlatencyms" WHERE ("unit_dur" = 'ms') AND $timeFilter GROUP BY time(1m) fill(null)
    ```
-     <img src="./diagrams/chart5.png" alt="drawing" width="300" />
-
+   <img src="./diagrams/chart5.png" alt="drawing" width="300" />
