@@ -13,10 +13,4 @@ variables:
 - group: iot-module-pump-group
 
 steps:
-- task: Docker@0
-  displayName: 'Build Grafana'
-  inputs:
-    azureSubscription: '$(SERVICE_ENDPOINT)'
-    azureContainerRegistry: '$(ACR_REGISTRY)'
-    dockerFile: grafana/Dockerfile
-    imageName: 'grafana:windows-$(Build.BuildId)'
+
