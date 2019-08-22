@@ -5,8 +5,6 @@
 # ACR_REGISTRY: {"loginServer":"{REGISTRY_NAME}.azurecr.io", "id" : "/subscriptions/{azureSubscription}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.ContainerRegistry/registries/{registryName"}
 # SERVICE_ENDPOINT: myService
 # 
-
-
 pool:
   name: Azure Pipelines
 
@@ -17,31 +15,31 @@ steps:
 - task: Docker@0
   displayName: 'Build Grafana'
   inputs:
-    azureSubscription: $(SERVICE_ENDPOINT)
-    azureContainerRegistry: $(ACR_REGISTRY)
+    azureSubscription: '$(SERVICE_ENDPOINT)'
+    azureContainerRegistry: '$(ACR_REGISTRY)'
     dockerFile: grafana/Dockerfile
     imageName: 'grafana:windows-$(Build.BuildId)'
 
 - task: Docker@0
   displayName: 'Build InfluxDB'
   inputs:
-    azureSubscription: $(SERVICE_ENDPOINT)
-    azureContainerRegistry: $(ACR_REGISTRY)
+    azureSubscription: '$(SERVICE_ENDPOINT)'
+    azureContainerRegistry: '$(ACR_REGISTRY)'
     dockerFile: influxdb/Dockerfile
-    imageName: 'grafana:windows-$(Build.BuildId)'
+    imageName: 'influxdb:windows-$(Build.BuildId)'
 
 - task: Docker@0
   displayName: 'Push Grafana'
   inputs:
-    azureSubscription: $(SERVICE_ENDPOINT)
-    azureContainerRegistry: $(ACR_REGISTRY)
+    azureSubscription: '$(SERVICE_ENDPOINT)'
+    azureContainerRegistry: '$(ACR_REGISTRY)'
     action: 'Push an image'
-    imageName: 'grafana:windows-:$(Build.BuildId)'
+    imageName: 'grafana:windows-$(Build.BuildId)'
 
 - task: Docker@0
   displayName: 'Push InfluxDB'
   inputs:
-    azureSubscription: $(SERVICE_ENDPOINT)
-    azureContainerRegistry: $(ACR_REGISTRY)
+    azureSubscription: '$(SERVICE_ENDPOINT)'
+    azureContainerRegistry: '$(ACR_REGISTRY)'
     action: 'Push an image'
-    imageName: 'influxdb:windows-:$(Build.BuildId)'
+    imageName: 'influxdb:windows-$(Build.BuildId)'
