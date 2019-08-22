@@ -10,7 +10,9 @@ These are Containers to be used for IoT Edge Metrics Gathering for Windows
 ## Supported platforms 
 Windows amd64
 
-## Deploy the Module to the Edge Device
+## Enable Metrics on the Edge
+Metrics are enabled using the following methods found in [edge docs](https://github.com/Azure/iotedge/blob/master/doc/Metrics.md)
+
 
 ```powershell
 # Deploy the Module
