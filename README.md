@@ -4,7 +4,7 @@ These are Containers to be used for IoT Edge Metrics Gathering for Windows
 
 ### Build using Azure Pipelines
 
-[![Build Status](https://dascholl.visualstudio.com/IoT/_apis/build/status/IoT-Docker%20container-CI?branchName=master)](https://dascholl.visualstudio.com/IoT/_build/latest?definitionId=42&branchName=master)
+[![Build Status](https://dascholl.visualstudio.com/IoT/_apis/build/status/danielscholl.iot-edge-metrics?branchName=master)](https://dascholl.visualstudio.com/IoT/_build/latest?definitionId=44&branchName=master)
 
 
 ## Supported platforms 
