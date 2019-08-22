@@ -21,12 +21,6 @@ az iot edge set-modules `
     --content deployment.json
 ```
 
-To utilize docker client on the windows server the docker host must be set properly for Moby.
-
-```powershell
-[Environment]::SetEnvironmentVariable("DOCKER_HOST", "npipe:////./pipe/iotedge_moby_engine")
-```
-
 ## Access the Edge Metrics
 Metrics are available directly on the Edge Device  `http://edgedevice:8080`
 
