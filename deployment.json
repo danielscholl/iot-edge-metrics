@@ -1,0 +1,73 @@
+{
+    "$schema-template": "2.0.0",
+    "modulesContent": {
+        "$edgeAgent": {
+            "properties.desired": {
+                "schemaVersion": "1.0",
+                "runtime": {
+                    "type": "docker",
+                    "settings": {
+                        "minDockerVersion": "v1.25",
+                        "loggingOptions": ""
+                    }
+                },
+                "systemModules": {
+                    "edgeAgent": {
+                        "type": "docker",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureiotedge-agent:1.0.8",
+                            "createOptions": ""
+                        }
+                    },
+                    "edgeHub": {
+                        "type": "docker",
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureiotedge-hub:1.0.8",
+                            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                        },
+                        "env": {
+                            "CollectMetrics": {
+                                "value": "true"
+                            }
+                        }
+                    }
+                },
+                "modules": {
+                    "influxdb": {
+                        "settings": {
+                            "image": "danielscholl/influxdb:windows-0.0.1",
+                            "createOptions": ""
+                        },
+                        "type": "docker",
+                        "version": "1.0",
+                        "status": "running",
+                        "restartPolicy": "always"
+                    },
+                    "grafana": {
+                        "settings": {
+                            "image": "danielscholl/grafana:windows-0.0.6",
+                            "createOptions": "{\"ExposedPorts\":{\"8080/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"8080/tcp\":[{\"HostPort\":\"8080\"}]}}}"
+                        },
+                        "type": "docker",
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "version": "1.0"
+                    }
+                }
+            }
+        },
+        "$edgeHub": {
+            "properties.desired": {
+                "routes": {
+                    "Pump1ToIoTHub": "FROM /messages/modules/pump1/outputs/* INTO $upstream"
+                },
+                "schemaVersion": "1.0",
+                "storeAndForwardConfiguration": {
+                    "timeToLiveSecs": 7200
+                }
+            }
+        }
+    }
+}
