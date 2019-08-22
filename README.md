@@ -27,6 +27,5 @@ az iot edge set-modules `
 Metrics are available directly on the Edge Device  `http://edgedevice:8080`
 
 ![[0]][0]
-_Dashboard_
 
 [0]: ./diagrams/Dashboard.png "Dashboard"
