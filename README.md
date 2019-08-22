@@ -2,6 +2,8 @@
 
 This repo contains containers that can be used for monitoring Windows Edge Metrics using Grafana and InfluxDB on the edge.
 
+>Note:  Edge Metrics are being enanced in version 1.0.9 and are expected to support sending metric information to Azure Log Analytics via [telegraf](https://www.influxdata.com/time-series-platform/telegraf/)
+
 ### Build using Azure Pipelines
 
 [![Build Status](https://dascholl.visualstudio.com/IoT/_apis/build/status/danielscholl.iot-edge-metrics?branchName=master)](https://dascholl.visualstudio.com/IoT/_build/latest?definitionId=44&branchName=master)
