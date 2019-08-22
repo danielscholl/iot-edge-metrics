@@ -37,7 +37,7 @@
                 "modules": {
                     "influxdb": {
                         "settings": {
-                            "image": "danielscholl/influxdb:windows-0.0.1",
+                            "image": "danielscholl/influxdb:windows-1.0.0",
                             "createOptions": ""
                         },
                         "type": "docker",
@@ -47,7 +47,7 @@
                     },
                     "grafana": {
                         "settings": {
-                            "image": "danielscholl/grafana:windows-0.0.6",
+                            "image": "danielscholl/grafana:windows-1.0.0",
                             "createOptions": "{\"ExposedPorts\":{\"8080/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"8080/tcp\":[{\"HostPort\":\"8080\"}]}}}"
                         },
                         "type": "docker",

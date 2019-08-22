@@ -3,7 +3,7 @@ services:
 
   influxdb:
     build: influxdb
-    image: danielscholl/influxdb:windows-0.0.1
+    image: danielscholl/influxdb:windows-1.0.0
     container_name: influxdb
     hostname: influxdb
     restart: always
@@ -14,7 +14,7 @@ services:
 
   grafana:
     build: grafana
-    image: danielscholl/grafana:windows-0.0.6
+    image: danielscholl/grafana:windows-1.0.0
     container_name: grafana
     depends_on:
       - influxdb
